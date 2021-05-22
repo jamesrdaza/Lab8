@@ -5,7 +5,7 @@
    * 1.
 
 2. Would you use a unit test to test the “message” feature of a messaging application? Why or why not? For this question, assume the “message” feature allows a user to write and send a message to another user.
-   * FIXME: Yes, because we are testing a single functionality, the messaging feature.
+   * No, because we are testing two separate functionalities, write and send.
 
 3. Would you use a unit test to test the “max message length” feature of a messaging application? Why or why not? For this question, assume the “max message length” feature prevents the user from typing more than 80 characters
    * Yes, because we are testing a single functionality, the max message length.
