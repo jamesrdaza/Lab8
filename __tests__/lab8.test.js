@@ -13,7 +13,6 @@ describe('Basic user flow for SPA ', () => {
   });
 
   // test 2 is given
-  /*
   it('Test2: Make sure <journal-entry> elements are populated', async () => {
     let allArePopulated = true;
     let data, plainValue;
@@ -27,7 +26,6 @@ describe('Basic user flow for SPA ', () => {
     }
     expect(allArePopulated).toBe(true);
   }, 30000);
-  */
 
   it('Test3: Clicking first <journal-entry>, new URL should contain /#entry1', async () => {
     // implement test3: Clicking on the first journal entry should update the URL to contain “/#entry1”
@@ -162,11 +160,41 @@ describe('Basic user flow for SPA ', () => {
 
 
   // create your own test 17
+  it('Test17: Clicking the back button once and then the forward button should bring the user back to entry 2 page', async() => {
+    await page.goBack();
+    expect(page.url()).toMatch("http://127.0.0.1:5500");
+    await page.goForward();
+    expect(page.url()).toContain("/#entry2");
+  });
 
   // create your own test 18
+  it('Test18: Clicking header banner brings the user back to home page', async() => {
+    const url = await page.$eval('h1', (header) => {
+      header.click();
+      return (window.location.href);
+    });
+    expect(url).toMatch("http://127.0.0.1:5500");
+  });
 
   // create your own test 19
+  it('Test19: After clicking the 4th journal entry, check that the audio element is correct', async() => {
+    await page.$$eval('journal-entry', (entries) => {
+      entries[3].click();
+      return (window.location.href);
+    });
+
+    const entryJSON = await page.$eval('entry-page', (entrypg) => {
+      return entrypg.entry;
+    });
+
+    entryJSON.audio
+    expect(entryJSON.audio).toEqual('https://drive.google.com/uc?export=download&id=1Orwnly-OMhNt83tb-SAWt6Y3S6AYQgkk');
+  });
 
   // create your own test 20
+  it('Test20: Verify the title is current when clicking on the fourth entry', async() => {
+    const header = await page.$eval('header', (el) => el.innerText);
+    expect(header).toMatch("Entry 4");
+  });
   
 });
