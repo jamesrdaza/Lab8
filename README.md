@@ -1,5 +1,15 @@
 # Lab8_Starter
 
+---
+## Author(s):
+* James Daza
+* Manda Tran
+
+## Deployed Github Pages URL:
+https://jamesrdaza.github.io/Lab8/
+
+---
+
 ## Check your understanding q's (FILL OUT)
 1. In your own words: Where would you fit your automated tests in your Bujo project development pipeline? (just write the letter)
    * 1.
